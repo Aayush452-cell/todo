@@ -60,8 +60,9 @@ ROOT_URLCONF = 'djangoProject4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'mynotes/build']
-        ,
+        'DIRS': [
+            os.path.join(BASE_DIR,'mynotes/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,12 +126,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS= True
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # for heroku not to get the collectstatic error
+
+STATICFILES_DIRS=[
+    BASE_DIR / 'mynotes/build/static'
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:9000",
+#     "http://127.0.0.1:8000"
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+django_heroku.settings(locals())

@@ -131,14 +131,9 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # for heroku not to get the collectstatic error
 
-STATICFILES_DIRS=[
-    BASE_DIR / 'mynotes/build/static'
-]
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # CORS_ALLOWED_ORIGINS = [
 #     "http://127.0.0.1:9000",
